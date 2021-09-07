@@ -1,0 +1,2 @@
+# VanillaBoilerplate
+Vanilla Javascript  Boilerplate
