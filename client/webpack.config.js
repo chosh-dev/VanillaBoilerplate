@@ -73,4 +73,12 @@ module.exports = {
     },
     historyApiFallback: true,
   },
+
+  resolve: {
+    alias: {
+      _styles: path.resolve(__dirname, "src/styles"),
+      _images: path.resolve(__dirname, "src/images"),
+      _utils: path.resolve(__dirname, "src/utils"),
+    },
+  },
 };

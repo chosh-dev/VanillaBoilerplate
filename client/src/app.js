@@ -1,6 +1,6 @@
-import "../public/stylesheets/style.scss";
+import "_styles/style.scss";
+import logo from "_images/logo.svg";
 import MainService from "./mainService.js";
-import logo from "../public/images/logo.svg";
 
 window.addEventListener("DOMContentLoaded", () => {
   const targetEl = document.querySelector("#log");
