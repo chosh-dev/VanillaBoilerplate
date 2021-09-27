@@ -33,7 +33,7 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         loader: "url-loader",
-        type: 'javascript/auto',
+        type: "javascript/auto",
         options: {
           outputPath: "images",
           name: "[name]-[contenthash].[ext]",
@@ -51,13 +51,7 @@ module.exports = {
       templateParameters: {
         env: process.env.NODE_ENV === "development" ? "(dev)" : "",
       },
-      minify:
-        process.env.NODE_ENV === "production"
-          ? {
-              collapseWhitespace: true,
-              removeComments: true,
-            }
-          : false,
+      minify: process.env.NODE_ENV === "production" ? true : false,
       hash: true,
     }),
     new CleanWebpackPlugin(),
