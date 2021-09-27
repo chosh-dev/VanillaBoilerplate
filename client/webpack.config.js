@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -14,6 +13,7 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true
   },
   module: {
     rules: [
@@ -32,12 +32,9 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        loader: "url-loader",
-        type: 'javascript/auto',
-        options: {
-          outputPath: "images",
-          name: "[name]-[contenthash].[ext]",
-          limit: 5000,
+        type: "asset",
+        generator: {
+          filename: "images/[hash][ext][query]",
         },
       },
     ],
@@ -51,18 +48,11 @@ module.exports = {
       templateParameters: {
         env: process.env.NODE_ENV === "development" ? "(dev)" : "",
       },
-      minify:
-        process.env.NODE_ENV === "production"
-          ? {
-              collapseWhitespace: true,
-              removeComments: true,
-            }
-          : false,
+      minify: process.env.NODE_ENV === "production" ? true : false,
       hash: true,
     }),
-    new CleanWebpackPlugin(),
     ...(process.env.NODE_ENV === "production"
-      ? [new MiniCssExtractPlugin({ filename: `stylesheets/[name].css` })]
+      ? [new MiniCssExtractPlugin({ filename: `styles/[name].css` })]
       : []),
   ],
 
@@ -76,6 +66,8 @@ module.exports = {
 
   resolve: {
     alias: {
+      _core: path.resolve(__dirname, "src/core"),
+      _components: path.resolve(__dirname, "src/components"),
       _styles: path.resolve(__dirname, "src/styles"),
       _images: path.resolve(__dirname, "src/images"),
       _utils: path.resolve(__dirname, "src/utils"),

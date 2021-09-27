@@ -1,5 +1,9 @@
-const $ = (target, selector) => {
+const $ = selector => {
+  return document.querySelector(selector);
+};
+
+const $$ = (target, selector) => {
   return target.querySelector(selector);
 };
 
-export { $ };
+export default { $, $$ };

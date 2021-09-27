@@ -1,0 +1,11 @@
+@use "_styles/mixin.scss" as *;
+@use "_styles/variable.scss" as *;
+
+body {
+  @include flex-column-center;
+  background-color: $white;
+}
+
+label {
+  color: $primary;
+}
