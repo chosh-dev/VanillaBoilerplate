@@ -1,5 +1,6 @@
 import "_styles/style.scss";
 import logo from "_images/logo.svg";
+import profilePng from "_images/profile.png";
 import MainService from "./mainService.js";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -11,4 +12,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   targetEl.innerHTML += `datalist is ${subHtml}`;
   targetEl.innerHTML += `<img src=${logo} alt="로고">`;
+  targetEl.innerHTML += `<img src=${profilePng} alt="로고">`;
 });

@@ -32,12 +32,9 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        loader: "url-loader",
-        type: "javascript/auto",
-        options: {
-          outputPath: "images",
-          name: "[name]-[contenthash].[ext]",
-          limit: 5000,
+        type: "asset",
+        generator: {
+          filename: "images/[hash][ext][query]",
         },
       },
     ],
@@ -55,7 +52,7 @@ module.exports = {
       hash: true,
     }),
     ...(process.env.NODE_ENV === "production"
-      ? [new MiniCssExtractPlugin({ filename: `stylesheets/[name].css` })]
+      ? [new MiniCssExtractPlugin({ filename: `styles/[name].css` })]
       : []),
   ],
 
