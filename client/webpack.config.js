@@ -66,6 +66,8 @@ module.exports = {
 
   resolve: {
     alias: {
+      _core: path.resolve(__dirname, "src/core"),
+      _components: path.resolve(__dirname, "src/components"),
       _styles: path.resolve(__dirname, "src/styles"),
       _images: path.resolve(__dirname, "src/images"),
       _utils: path.resolve(__dirname, "src/utils"),
