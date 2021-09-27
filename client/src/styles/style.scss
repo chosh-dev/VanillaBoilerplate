@@ -1,7 +1,11 @@
-body {
-  background-color: wheat;
+@use "_styles/mixin.scss" as *;
+@use "_styles/variable.scss" as *;
 
-  div {
-    color: red;
-  }
+body {
+  @include flex-column-center;
+  background-color: $white;
+}
+
+div {
+  color: $primary;
 }
