@@ -1,5 +1,5 @@
-import Component from "_core/component";
-import Example from "_components/example";
+import Component from "_core/Component";
+import Example from "_components/Example";
 import logo from "_images/logo.svg";
 import profilePng from "_images/profile.png";
 

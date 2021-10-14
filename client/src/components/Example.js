@@ -1,4 +1,4 @@
-import Component from "_core/component";
+import Component from "_core/Component";
 
 export default class Example extends Component {
   template() {
