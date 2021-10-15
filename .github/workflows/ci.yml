@@ -28,4 +28,4 @@ jobs:
             cd ..
             cd server
             npm install
-            npm start &
+            pm2 start app.js
