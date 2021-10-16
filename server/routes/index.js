@@ -16,7 +16,7 @@ const routers = async ({ app }) => {
       : res.status(500).json({ msg: err.message });
   });
 
-  console.log("✔ Routers Initialized");
+  console.log("✅ Routers Initialized");
 
   return app;
 };
