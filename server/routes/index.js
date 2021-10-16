@@ -4,18 +4,16 @@ const path = require("path");
 const apiRouter = require("./api");
 
 const routers = async ({ app }) => {
-  app.get("/status", (req, res) => res.status(200).end());
-
+  // app.use(express.static(path.join(__dirname, "../../client/dist")));
   app.use("/api", apiRouter);
 
-  // app.use(express.static(path.join(__dirname, "../../client/dist")));
-
-  app.use((req, res) => {
-    res.status(404).send("Not Found");
-  });
+  app.use((req, res) => res.status(404).json({ msg: "Not Found" }));
 
   app.use((err, req, res, next) => {
-    res.status(500).send(err.message);
+    console.error("⛔" + err);
+    err.status
+      ? res.status(err.status).json({ msg: err.message })
+      : res.status(500).json({ msg: err.message });
   });
 
   console.log("✔ Routers Initialized");
