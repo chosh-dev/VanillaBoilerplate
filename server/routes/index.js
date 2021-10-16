@@ -10,7 +10,7 @@ const routers = async ({ app }) => {
   app.use((req, res) => res.status(404).json({ msg: "Not Found" }));
 
   app.use((err, req, res, next) => {
-    console.error("⛔" + err);
+    app.logger.error("⛔ " + err);
     err.status
       ? res.status(err.status).json({ msg: err.message })
       : res.status(500).json({ msg: err.message });
