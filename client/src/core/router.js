@@ -2,6 +2,8 @@ import Main from '../pages/Main';
 import Profile from '../pages/Profile';
 import auth from '../middlewares/auth';
 
+let currentView = null;
+
 const router = async () => {
   const $root = $('.app');
   const routes = [
@@ -21,7 +23,8 @@ const router = async () => {
     }
   }
 
-  new match.view($root);
+  currentView?.unmounted();
+  currentView = new match.view($root);
 };
 
 const navigateTo = (url) => {
