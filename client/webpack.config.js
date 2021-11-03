@@ -1,57 +1,57 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: "development",
-  target: ["web", "es5"],
-  devtool: "inline-source-map",
+  mode: 'development',
+  target: ['web', 'es5'],
+  devtool: 'inline-source-map',
   entry: {
-    main: "./src/app.js",
+    main: './src/app.js',
   },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
         use: [
-          process.env.NODE_ENV === "production" ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
-          "sass-loader",
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        type: "asset",
+        type: 'asset',
         generator: {
-          filename: "images/[hash][ext][query]",
+          filename: 'images/[hash][ext][query]',
         },
       },
     ],
   },
   plugins: [
     new webpack.DefinePlugin({
-      VERSION: JSON.stringify("v.1.0.0"),
+      VERSION: JSON.stringify('v.1.0.0'),
     }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: './src/index.html',
       templateParameters: {
-        env: process.env.NODE_ENV === "development" ? "(dev)" : "",
+        env: process.env.NODE_ENV === 'development' ? '(dev)' : '',
       },
-      minify: process.env.NODE_ENV === "production" ? true : false,
+      minify: process.env.NODE_ENV === 'production' ? true : false,
       hash: true,
     }),
-    ...(process.env.NODE_ENV === "production"
+    ...(process.env.NODE_ENV === 'production'
       ? [new MiniCssExtractPlugin({ filename: `styles/[name].css` })]
       : []),
   ],
@@ -66,11 +66,13 @@ module.exports = {
 
   resolve: {
     alias: {
-      _core: path.resolve(__dirname, "/src/core"),
-      _components: path.resolve(__dirname, "/src/components"),
-      _styles: path.resolve(__dirname, "/src/styles"),
-      _images: path.resolve(__dirname, "/src/images"),
-      _utils: path.resolve(__dirname, "/src/utils"),
+      _core: path.resolve(__dirname, 'src/core'),
+      _components: path.resolve(__dirname, 'src/components'),
+      _styles: path.resolve(__dirname, 'src/styles'),
+      _images: path.resolve(__dirname, 'src/images'),
+      _utils: path.resolve(__dirname, 'src/utils'),
+      _actions: path.resolve(__dirname, 'src/store/actions'),
+      _store: path.resolve(__dirname, 'src/store'),
     },
   },
 };
