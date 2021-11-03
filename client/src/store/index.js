@@ -1,4 +1,5 @@
 import reducer from './reducers';
+import saga from './sagas';
 
 const store = {};
 let currentState = {};
@@ -31,6 +32,7 @@ const diffing = (newState) => {
 };
 
 const dispatch = (action) => {
+  saga(action);
   const newState = reducer(currentState, action);
   diffing(newState);
   setCurrentState(newState);
