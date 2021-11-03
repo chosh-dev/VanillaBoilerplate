@@ -32,17 +32,17 @@ const navigateTo = (url) => {
   router();
 };
 
-window.addEventListener('popstate', router);
+const initRouter = () => {
+  window.addEventListener('popstate', router);
 
-document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', (e) => {
     if (e.target.matches('[data-link]')) {
       e.preventDefault();
-      navigateTo(e.target.href);
+      navigateTo(e.target.closest('a').href);
     }
   });
 
   router();
-});
+};
 
-export { router, navigateTo };
+export { initRouter, navigateTo };

@@ -24,7 +24,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -47,7 +51,9 @@ module.exports = {
       minify: process.env.NODE_ENV === 'production' ? true : false,
       hash: true,
     }),
-    ...(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin({ filename: `styles/[name].css` })] : []),
+    ...(process.env.NODE_ENV === 'production'
+      ? [new MiniCssExtractPlugin({ filename: `styles/[name].css` })]
+      : []),
   ],
 
   devServer: {
@@ -65,6 +71,8 @@ module.exports = {
       _styles: path.resolve(__dirname, 'src/styles'),
       _images: path.resolve(__dirname, 'src/images'),
       _utils: path.resolve(__dirname, 'src/utils'),
+      _actions: path.resolve(__dirname, 'src/store/actions'),
+      _store: path.resolve(__dirname, 'src/store'),
     },
   },
 };
