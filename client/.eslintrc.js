@@ -3,10 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['standard', 'eslint-config-prettier'],
+  extends: ['standard', 'plugin:prettier/recommended'],
   parser: '@babel/eslint-parser',
-  plugins: ['prettier', '@babel'],
-  rules: {
-    'prettier/prettier': 'error',
-  },
+  plugins: ['@babel'],
 };
