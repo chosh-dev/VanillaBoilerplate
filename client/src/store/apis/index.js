@@ -9,3 +9,4 @@ const post = (url, body) =>
   });
 
 export const login = ({ id }) => post('/auth/login', { id });
+export const test = () => fetch('/api/example');

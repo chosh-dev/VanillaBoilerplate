@@ -1,3 +1,4 @@
+import authReducer from './auth';
 import countReducer from './count';
 
 export default (state, action) => {
@@ -12,5 +13,5 @@ export default (state, action) => {
     return newState;
   };
 
-  return combineReducers({ countReducer });
+  return combineReducers({ authReducer, countReducer });
 };
