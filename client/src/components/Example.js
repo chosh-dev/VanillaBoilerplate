@@ -1,6 +1,6 @@
 import Component from '_core/Component';
 import { subscribe, dispatch } from '_store';
-import { requestLogin } from '_actions';
+import { countUp, requestLogin } from '_actions';
 
 export default class Example extends Component {
   setup() {
@@ -14,11 +14,17 @@ export default class Example extends Component {
   template() {
     return `
     <h1 class="example">컴포넌트 예시</h1>
-    <h2 class="example">클릭시 숫자 더해질 것 ${this.state.msg}</h2>
+    <h2 class="plusText">클릭시 숫자 더하기 DISPATCH ${this.state.msg}</h2>
+    <h2 class="loginText">클릭시 비동기 SAGA DISPATCH</h2>
     `;
   }
 
   setEvent() {
-    this.addEvent('click', '.example', () => dispatch(requestLogin()));
+    this.addEvent('click', '.plusText', () => {
+      dispatch(countUp());
+    });
+    this.addEvent('click', '.loginText', () => {
+      dispatch(requestLogin({ id: 'request ID' }));
+    });
   }
 }

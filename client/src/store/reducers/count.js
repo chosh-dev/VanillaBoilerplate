@@ -1,4 +1,4 @@
-import { REQUEST_LOGIN } from '../types';
+import { COUNT_UP } from '../types';
 
 const initState = {
   count: 0,
@@ -6,7 +6,7 @@ const initState = {
 
 export default (state = initState, action = {}) => {
   switch (action.type) {
-    case REQUEST_LOGIN:
+    case COUNT_UP:
       return { ...state, count: state.count + 1 };
     default:
       return state;
