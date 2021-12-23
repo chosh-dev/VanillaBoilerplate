@@ -14,7 +14,7 @@ const router = async () => {
   const fallback = routes[0];
   const match = routes.find((route) => route.path === location.pathname) ?? fallback;
 
-  for (let fn of match.middleware ?? []) {
+  for (const fn of match.middleware ?? []) {
     try {
       await fn();
     } catch (e) {
