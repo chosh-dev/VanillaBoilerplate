@@ -1,14 +1,14 @@
-import Component from "_core/Component";
-import Example from "_components/Example";
-import logo from "_images/logo.svg";
-import profilePng from "_images/profile.png";
+import Component from '_core/Component';
+import Example from '_components/Example';
+import logo from '_images/logo.svg';
+import profilePng from '_images/profile.png';
 
 export default class Main extends Component {
-  #privateField = "check babel work";
+  #privateField = 'check babel work';
 
   setup() {
     this.state = {
-      dataList: [1, 2, 3, 4, [5, 6, [7]]].flat(2).join(""),
+      dataList: [1, 2, 3, 4, [5, 6, [7]]].flat(2).join(''),
     };
   }
 
@@ -27,11 +27,11 @@ export default class Main extends Component {
       <span>png overw 8kb</span>
       <img src=${profilePng} alt="profile">
     </div>
-    <div data-component="example"></div>
+    <div data-component="Example"></div>
     `;
   }
 
   mounted() {
-    new Example($('[data-component="example"]'));
+    this.addComponent(Example, '[data-component="Example"]');
   }
 }

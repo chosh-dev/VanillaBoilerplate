@@ -28,8 +28,8 @@ export default class Component {
     this.render();
   }
 
-  addComponent(component, selector, props = {}) {
-    const child = new component(this.getChild(selector), props);
+  addComponent(Component, selector, props = {}) {
+    const child = new Component(this.getChild(selector), props);
     this.children.push(child);
     return child;
   }
@@ -53,7 +53,9 @@ export default class Component {
   }
 
   unmounted() {
-    this.eventHandlers.forEach(([eventType, handler]) => this.$target.removeEventListener(eventType, handler));
+    this.eventHandlers.forEach(([eventType, handler]) =>
+      this.$target.removeEventListener(eventType, handler)
+    );
 
     this.children.forEach((child) => child.unmounted());
   }

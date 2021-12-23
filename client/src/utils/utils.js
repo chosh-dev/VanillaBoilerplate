@@ -1,4 +1,4 @@
-const $ = selector => {
+const $ = (selector) => {
   return document.querySelector(selector);
 };
 

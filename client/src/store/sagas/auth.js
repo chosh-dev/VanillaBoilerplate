@@ -9,11 +9,11 @@ const login = async (action) => {
     if (res.ok) {
       dispatch(loginSuccess(true));
     } else {
-      const { msg } = await res.json();
-      console.log('saga작동! api 실패!');
+      const { msg } = res.json();
+      console.log(`saga작동! api 실패! ${msg}`);
     }
   } catch (error) {
-    console.log('saga작동! api 실패!');
+    console.log(`saga작동! api 실패! ${error}`);
   }
 };
 
