@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const apiMocker = require('connect-api-mocker');
 
 module.exports = {
   mode: 'development',
@@ -48,7 +49,7 @@ module.exports = {
       templateParameters: {
         env: process.env.NODE_ENV === 'development' ? '(dev)' : '',
       },
-      minify: process.env.NODE_ENV === 'production' ? true : false,
+      minify: process.env.NODE_ENV === 'production',
       hash: true,
     }),
     ...(process.env.NODE_ENV === 'production'
@@ -57,6 +58,11 @@ module.exports = {
   ],
 
   devServer: {
+    onBeforeSetupMiddleware: (devServer) => {
+      devServer.app.use(apiMocker('/auth', './mocks/auth'));
+      devServer.app.use(apiMocker('/api', './mocks/api'));
+    },
+
     port: 3000,
     client: {
       overlay: true,

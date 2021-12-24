@@ -1,15 +1,16 @@
 import Main from '../pages/Main';
 import Profile from '../pages/Profile';
 import auth from '../middlewares/auth';
+import { $ } from '_utils/dom';
 
 let currentView = null;
 
 const router = async () => {
   const $root = $('.app');
   const routes = [
-    { path: '/', view: Main },
-    { path: '/profile', view: Profile },
-    { path: '/middleware', view: Profile, middleware: [auth] },
+    { path: '/', View: Main },
+    { path: '/profile', View: Profile },
+    { path: '/middleware', View: Profile, middleware: [auth] },
   ];
   const fallback = routes[0];
   const match = routes.find((route) => route.path === location.pathname) ?? fallback;
@@ -23,8 +24,8 @@ const router = async () => {
     }
   }
 
-  currentView?.unmounted();
-  currentView = new match.view($root);
+  currentView?.unMount();
+  currentView = new match.View($root);
 };
 
 const navigateTo = (url) => {

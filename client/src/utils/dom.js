@@ -6,4 +6,4 @@ const $$ = (target, selector) => {
   return target.querySelector(selector);
 };
 
-export default { $, $$ };
+export { $, $$ };

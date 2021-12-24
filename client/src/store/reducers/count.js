@@ -1,13 +1,13 @@
-import { LOGIN_SUCCESS } from '../types';
+import { COUNT_UP } from '../types';
 
 const initState = {
-  loginSuccess: false,
+  count: 0,
 };
 
 export default (state = initState, action = {}) => {
   switch (action.type) {
-    case LOGIN_SUCCESS:
-      return { ...state, loginSuccess: true };
+    case COUNT_UP:
+      return { ...state, count: state.count + 1 };
     default:
       return state;
   }

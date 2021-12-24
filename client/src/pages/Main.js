@@ -24,7 +24,7 @@ export default class Main extends Component {
       <img src=${logo} alt="logo">
     </div>
     <div>
-      <span>png overw 8kb</span>
+      <span>png over 8kb</span>
       <img src=${profilePng} alt="profile">
     </div>
     <div data-component="Example"></div>

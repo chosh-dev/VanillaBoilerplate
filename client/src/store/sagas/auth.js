@@ -7,10 +7,11 @@ const login = async (action) => {
   try {
     const res = await api.login({ id: action.payload.id });
     if (res.ok) {
+      const data = await res.json();
       dispatch(loginSuccess(true));
+      console.log(data);
     } else {
-      const { msg } = res.json();
-      console.log(`saga작동! api 실패! ${msg}`);
+      console.log(`saga작동! api 실패`);
     }
   } catch (error) {
     console.log(`saga작동! api 실패! ${error}`);
