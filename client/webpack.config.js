@@ -79,6 +79,7 @@ module.exports = {
       _utils: path.resolve(__dirname, 'src/utils'),
       _actions: path.resolve(__dirname, 'src/store/actions'),
       _store: path.resolve(__dirname, 'src/store'),
+      _types: path.resolve(__dirname, 'src/store/types'),
     },
   },
 };
