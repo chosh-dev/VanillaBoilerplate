@@ -1,17 +1,19 @@
 import authReducer from './auth';
 import countReducer from './count';
 
-export default (state, action) => {
-  const combineReducers = (reducers) => {
-    const newState = {};
+const reducerList = [
+  { id: 'auth', reducer: authReducer },
+  { id: 'count', reducer: countReducer },
+];
 
-    Object.keys(reducers).forEach((key) => {
-      const previousState = state?.[key];
-      const reducer = reducers[key];
-      newState[key] = reducer(previousState, action);
-    });
-    return newState;
-  };
+const combineReducers = (state, action) => {
+  const newState = {};
 
-  return combineReducers({ authReducer, countReducer });
+  reducerList.forEach(({ id, reducer }) => {
+    newState[id] = reducer(state?.[id], action);
+  });
+
+  return newState;
 };
+
+export default combineReducers;

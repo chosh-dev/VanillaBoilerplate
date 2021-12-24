@@ -16,26 +16,26 @@ export default class Component {
     return ``;
   }
 
+  mounted() {}
+
   render() {
     this.$target.innerHTML = this.template();
     this.mounted();
   }
-
-  mounted() {}
 
   setState(newState) {
     this.state = { ...this.state, ...newState };
     this.render();
   }
 
+  getChild(selector) {
+    return this.$target.querySelector(selector);
+  }
+
   addComponent(Component, selector, props = {}) {
     const child = new Component(this.getChild(selector), props);
     this.children.push(child);
     return child;
-  }
-
-  getChild(selector) {
-    return this.$target.querySelector(selector);
   }
 
   setEvent() {}
@@ -52,11 +52,15 @@ export default class Component {
     this.$target.addEventListener(eventType, eventHandler);
   }
 
-  unmounted() {
+  unMounted() {}
+
+  unMount() {
     this.eventHandlers.forEach(([eventType, handler]) =>
       this.$target.removeEventListener(eventType, handler)
     );
 
-    this.children.forEach((child) => child.unmounted());
+    this.children.forEach((child) => child.unMount());
+
+    this.unMounted();
   }
 }

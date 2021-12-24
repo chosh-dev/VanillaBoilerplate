@@ -12,6 +12,7 @@ export default class Profile extends Component {
   template() {
     return `
     <h1>Profile page</h1>
+    <a href="/" data-link>click this to go back to Main</a>
     `;
   }
 }
