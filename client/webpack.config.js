@@ -49,7 +49,7 @@ module.exports = {
       templateParameters: {
         env: process.env.NODE_ENV === 'development' ? '(dev)' : '',
       },
-      minify: process.env.NODE_ENV === 'production' ? true : false,
+      minify: process.env.NODE_ENV === 'production',
       hash: true,
     }),
     ...(process.env.NODE_ENV === 'production'
