@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "바닐라 자바스크립트 보일러플레이트",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "webpack-dev-server --progress",
     "build": "set NODE_ENV=production&&webpack",
-    "build-dev": "set NODE_ENV=development&&webpack"
+    "build-dev": "set NODE_ENV=development&&webpack",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.4.5",
     "mini-css-extract-plugin": "^2.2.2",
     "node-sass": "^6.0.1",
     "prettier": "^2.3.2",
