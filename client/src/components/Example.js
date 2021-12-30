@@ -10,7 +10,7 @@ export default class Example extends Component {
     };
 
     this.setCount = (value) => this.setState({ count: value });
-    this.setLoginSuccess = (value) => this.setState({ loginSuccess: value });
+    this.setLoginSuccess = (_, value) => this.setState({ loginSuccess: value });
 
     subscribe('count', this.setCount);
     subscribe('loginSuccess', this.setLoginSuccess);

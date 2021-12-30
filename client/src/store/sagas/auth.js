@@ -8,8 +8,7 @@ const login = async (action) => {
     const res = await api.login({ id: action.payload.id });
     if (res.ok) {
       const data = await res.json();
-      dispatch(loginSuccess(true));
-      console.log(data);
+      dispatch(loginSuccess(data.test));
     } else {
       console.log(`saga작동! api 실패`);
     }

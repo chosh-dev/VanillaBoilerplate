@@ -16,18 +16,19 @@ const initStore = () => {
   setCurrentState(initState);
 };
 
-const executeCallbacks = (state) => {
-  store[state].callback.forEach((fn) => fn(store[state].value));
+const executeCallbacks = (state, oldValue, newValue) => {
+  store[state].callback.forEach((fn) => fn(oldValue, newValue));
 };
 
 const diffing = (newState) => {
   Object.keys(currentState).forEach((reducerId) => {
     Object.keys(currentState[reducerId]).forEach((state) => {
-      if (currentState[reducerId][state] === newState[reducerId][state]) return;
-      if (JSON.stringify(currentState[reducerId][state]) === JSON.stringify(newState[reducerId][state]))
-        return;
-      store[state].value = newState[reducerId][state];
-      executeCallbacks(state);
+      const oldValue = currentState[reducerId][state];
+      const newValue = newState[reducerId][state];
+      if (oldValue === newValue) return;
+      if (JSON.stringify(oldValue) === JSON.stringify(newValue)) return;
+      store[state].value = newValue;
+      executeCallbacks(state, oldValue, newValue);
     });
   });
 };
