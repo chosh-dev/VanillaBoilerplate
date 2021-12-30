@@ -7,7 +7,7 @@ import apiMocker from 'connect-api-mocker';
 const __dirname = path.resolve();
 
 export default {
-  mode: 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   target: ['web', 'es5'],
   devtool: 'inline-source-map',
   entry: {
