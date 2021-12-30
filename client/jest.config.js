@@ -4,7 +4,10 @@ export default async () => {
     transform: {},
     rootDir: './',
     moduleFileExtensions: ['js', 'jsx'],
+    modulePaths: ['<rootDir>/src'],
     moduleNameMapper: {
+      '\\.(css|scss|less)$': '<rootDir>/__mocks__/styleMock.js',
+      '\\.(gif|ttf|eot|svg)$': '<rootDir>/__mocks__/fileMock.js',
       '^_core(.*)$': '<rootDir>/src/core$1',
       '^_components(.*)$': '<rootDir>/src/components$1',
       '^_styles(.*)$': '<rootDir>/src/_styles$1',
