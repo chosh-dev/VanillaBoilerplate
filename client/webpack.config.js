@@ -1,10 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const apiMocker = require('connect-api-mocker');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import apiMocker from 'connect-api-mocker';
 
-module.exports = {
+const __dirname = path.resolve();
+
+export default {
   mode: 'development',
   target: ['web', 'es5'],
   devtool: 'inline-source-map',
@@ -20,9 +22,20 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        resolve: {
+          fullySpecified: false,
+        },
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        use: [
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+        ],
+      },
+
       {
         test: /\.scss$/,
         use: [
