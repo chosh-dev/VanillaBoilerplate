@@ -1,7 +1,6 @@
 import Component from '_core/Component';
 import Example from '_components/Example';
-import logo from '_images/logo.svg';
-import profilePng from '_images/profile.png';
+import { logo, profile } from '_images';
 
 export default class Main extends Component {
   #privateField = 'check babel work';
@@ -25,7 +24,7 @@ export default class Main extends Component {
     </div>
     <div>
       <span>png over 8kb</span>
-      <img src=${profilePng} alt="profile">
+      <img src=${profile} alt="profile">
     </div>
     <div data-component="Example"></div>
     `;
