@@ -3,6 +3,7 @@ export default class Component {
     this.$target = target;
     this.props = props;
     this.state = {};
+    this.ref = {};
     this.children = [];
     this.eventHandlers = [];
     this.setup();
@@ -26,6 +27,10 @@ export default class Component {
   setState(newState) {
     this.state = { ...this.state, ...newState };
     this.render();
+  }
+
+  setRef(newRef) {
+    this.ref = { ...this.ref, ...newRef };
   }
 
   getChild(selector) {
