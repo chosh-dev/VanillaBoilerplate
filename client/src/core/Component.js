@@ -20,6 +20,8 @@ export default class Component {
   mounted() {}
 
   render() {
+    this.children.forEach((child) => child.unMount());
+    this.children = [];
     this.$target.innerHTML = this.template();
     this.mounted();
   }
@@ -65,7 +67,7 @@ export default class Component {
     );
 
     this.children.forEach((child) => child.unMount());
-
+    this.children = [];
     this.unMounted();
   }
 }
